@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+  - node
+  - lts/*
+
+jobs:
+  include:
+    - stage: verify codestyle
+      node_js: lts/*
+      before_script:
+        - commitlint-travis
+        - standard
+    - stage: release
+      node_js: lts/*
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: npm run semantic-release

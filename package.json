@@ -1,0 +1,100 @@
+{
+  "name": "dynamic-dotenv",
+  "version": "1.0.0",
+  "description": "A version of dotenv that will watch the dotenv file and reload it if it changes",
+  "main": "lib/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "build": "babel src/index.js --out-file lib/index.js",
+    "commit": "git-cz",
+    "test": "jest",
+    "check-coverage": "jest --coverage",
+    "tdd": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/call-a3/dynamic-dotenv.git"
+  },
+  "keywords": [
+    "dotenv",
+    "dynamic",
+    "watch",
+    "env",
+    ".env",
+    "environment",
+    "variables",
+    "config",
+    "settings"
+  ],
+  "author": {
+    "name": "Adriaan Callaerts",
+    "email": "adriaan.callaerts@gmail.com",
+    "url": "https://www.adriaan.me"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/call-a3/dynamic-dotenv/issues"
+  },
+  "homepage": "https://github.com/call-a3/dynamic-dotenv#readme",
+  "dependencies": {
+    "chokidar": "^3.0.2",
+    "dotenv": "^8.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@call-a3/standard": "^1.0.0",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@commitlint/travis-cli": "^8.1.0",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
+    "commitizen": "^4.0.3",
+    "commitlint": "^8.1.0",
+    "cz-conventional-changelog": "^3.0.2",
+    "husky": "^3.0.2",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.2.1",
+    "semantic-release": "^15.13.19"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "npm run check-coverage"
+    }
+  },
+  "lint-staged": {
+    "*.js": "standard --fix"
+  },
+  "standard-engine": {
+    "name": "@call-a3/standard"
+  },
+  "release": {
+    "tagFormat": "${version}",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
+  }
+}
