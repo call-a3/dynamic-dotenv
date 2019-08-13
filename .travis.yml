@@ -8,11 +8,13 @@ jobs:
   include:
     - stage: verify codestyle
       node_js: lts/*
-      before_script:
+      script:
         - commitlint-travis
         - standard
+    - stage: test
     - stage: release
       node_js: lts/*
+      script: skip
       deploy:
         provider: script
         skip_cleanup: true
