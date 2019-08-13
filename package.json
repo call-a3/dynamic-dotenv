@@ -1,6 +1,6 @@
 {
   "name": "dynamic-dotenv",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "A version of dotenv that will watch the dotenv file and reload it if it changes",
   "main": "lib/index.js",
   "module": "src/index.js",
