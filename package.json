@@ -6,16 +6,27 @@
   "module": "src/index.js",
   "scripts": {
     "build": "babel src/index.js --out-file lib/index.js",
-    "commit": "git-cz",
-    "test": "jest",
     "check-coverage": "jest --coverage",
+    "commit": "git-cz",
+    "report-coverage": "codecov",
+    "semantic-release": "semantic-release",
     "tdd": "jest --watch",
-    "semantic-release": "semantic-release"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/call-a3/dynamic-dotenv.git"
   },
+  "bugs": {
+    "url": "https://github.com/call-a3/dynamic-dotenv/issues"
+  },
+  "homepage": "https://github.com/call-a3/dynamic-dotenv#readme",
+  "author": {
+    "name": "Adriaan Callaerts",
+    "email": "adriaan.callaerts@gmail.com",
+    "url": "https://www.adriaan.me"
+  },
+  "license": "MIT",
   "keywords": [
     "dotenv",
     "dynamic",
@@ -27,16 +38,6 @@
     "config",
     "settings"
   ],
-  "author": {
-    "name": "Adriaan Callaerts",
-    "email": "adriaan.callaerts@gmail.com",
-    "url": "https://www.adriaan.me"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/call-a3/dynamic-dotenv/issues"
-  },
-  "homepage": "https://github.com/call-a3/dynamic-dotenv#readme",
   "dependencies": {
     "chokidar": "^3.0.2",
     "dotenv": "^8.0.0"
@@ -44,7 +45,7 @@
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "@call-a3/standard": "^1.0.0",
+    "@call-a3/standard": "^1.0.1",
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
     "@commitlint/travis-cli": "^8.1.0",
@@ -53,10 +54,10 @@
     "commitizen": "^4.0.3",
     "commitlint": "^8.1.0",
     "cz-conventional-changelog": "^3.0.2",
-    "husky": "^3.0.2",
-    "jest": "^24.8.0",
-    "lint-staged": "^9.2.1",
-    "semantic-release": "^15.13.21"
+    "husky": "^3.0.4",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.2.3",
+    "semantic-release": "^15.13.24"
   },
   "husky": {
     "hooks": {
