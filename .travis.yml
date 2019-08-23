@@ -6,12 +6,23 @@ node_js:
 
 jobs:
   include:
+    - stage: greenkeeper
+      node_js: lts/*
+      before_install: npm install -g greenkeeper-lockfile
+      before_script: greenkeeper-lockfile-update
+      script: skip
+      after_script: greenkeeper-lockfile-upload
+
+    - stage: test
+      after_success:
+        - npm run report-coverage
+
     - stage: verify codestyle
       node_js: lts/*
       script:
         - commitlint-travis
         - standard
-    - stage: test
+
     - stage: release
       node_js: lts/*
       script: skip
@@ -19,3 +30,13 @@ jobs:
         provider: script
         skip_cleanup: true
         script: npm run semantic-release
+
+stages:
+  - name: verify codestyle
+  - name: compile
+  - name: test
+    if: NOT branch =~ /^greenkeeper\/.*$/
+  - name: greenkeeper
+    if: branch =~ /^greenkeeper\/.*$/
+  - name: release
+    if: branch = master
